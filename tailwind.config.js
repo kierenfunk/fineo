@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: {
+        'hero-image': "url('/hero2.png')",
+        'cube': "url('/cube2.png')",
+      }
     },
   },
   variants: {

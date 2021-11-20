@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kierenfunk/fineo#readme",
   "dependencies": {
+    "formik": "^2.2.9",
     "next": "^11.1.2",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",

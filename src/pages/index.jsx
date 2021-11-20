@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Hero from '../components/Hero';
 import Form from '../components/Form';
 
@@ -17,7 +16,7 @@ const Section1 = ({ children, header, className }) => (
 const Section2 = ({ children, header, imageSrc }) => (
   <div className="text-gray-700 text-center border-2 px-2 py-4 rounded">
     <div className="py-2">
-      <Image src={imageSrc} width="100" height="100" />
+      <img alt={header} src={imageSrc} width="100" height="100" />
     </div>
     <h3 className="text-lg">{header}</h3>
     <p className="text-sm py-2">{children}</p>

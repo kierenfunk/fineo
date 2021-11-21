@@ -3,7 +3,7 @@ import Hero from '../components/Hero';
 import Form from '../components/Form';
 
 const Section1 = ({ children, header, className }) => (
-  <div className={`${className} px-8 md:px-20 py-8`}>
+  <div className={`${className} px-4 md:px-20 py-8`}>
     <div className="inline-block border-b-2 text-gray-100 px-4 py-2">
       <h2 className="text-gray-100 font-bold text-4xl">
         {header}
@@ -26,7 +26,7 @@ const Section2 = ({ children, header, imageSrc }) => (
 const Home = () => (
   <div className="bg-gray-100">
     <Hero />
-    <div className="px-20 bg-cube bg-repeat bg-left">
+    <div className="md:px-20 px-4 bg-cube bg-repeat bg-left">
       <div className="">
         <Section1 header="Automate" className="bg-blue-900">
           Build a more efficient business and automate away repetitive tasks.
@@ -40,7 +40,7 @@ const Home = () => (
         </Section1>
       </div>
     </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-20 gap-4 py-16">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 md:px-20 px-4 gap-4 py-16">
       <Section2 imageSrc="/innovation.png" header="AI and Machine Learning">
         Get ahead of your competition and utilise data together with
         the latest technology to build a smarter, more efficient business.
@@ -87,7 +87,7 @@ const Home = () => (
                 Given your client's unique situation, rank which lender is the best
                 match for your client based on the lender's policies.
         </p> */}
-    <div className="bg-gray-900">
+    <div className="bg-gray-900" id="connect">
       <Form />
       <div className="w-5/6 border-t m-auto text-center text-gray-200 p-4 text-sm">Copyright © 2021, Fineo Digital. All rights reserved.</div>
     </div>

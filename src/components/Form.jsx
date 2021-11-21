@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 
 const Label = ({ children, ...props }) => (
@@ -14,8 +14,19 @@ const Error = ({ error, touched }) => {
   return <p className="invisible text-sm p-1">undefined</p>;
 };
 
-const Form = () => (
-  <div className="m-auto w-1/2 p-8 py-16">
+const SubmitResponse = ({type,msg}) => {
+  if(type==='fail'){
+    return <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">{msg}</div>
+  }
+  else{
+    return <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">{msg}</div>
+  }
+}
+
+const Form = () => {
+  const [submissionMessage, setSubmissionMessage] = useState(null)
+  return(
+  <div className="m-auto w-11/12 md:w-1/2 p-8 py-16">
     <h2 className="text-4xl text-gray-200 font-bold mb-4">Connect with us today</h2>
     <Formik
       initialValues={{ email: '', name: '', message: '' }}
@@ -28,10 +39,25 @@ const Form = () => (
         return errors;
       }}
       onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          // console.log(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+        setTimeout(async () => {
+          try{
+            setSubmitting(true);
+            const response = await fetch(`${window.location.origin}/.netlify/functions/formHandler`, {
+                method: 'POST',
+                body: JSON.stringify({
+                  data: values,
+                }),
+              });
+              if (response.status !== 200) {
+                setSubmissionMessage({type:'fail',msg:'There was a problem sending a message, try again later'})
+              }
+          } catch {
+            setSubmissionMessage({type:'fail',msg:'There was a problem sending a message, try again later'})
+          } finally {
+            setSubmissionMessage({type:'success',msg:'Thank you for connecting with us, we will be in touch with you soon!'})
+            setSubmitting(false);
+          }
+        }, 1000);
       }}
     >
       {({
@@ -64,14 +90,14 @@ const Form = () => (
             value={values.message}
           />
           <Error error={errors.message} touched={touched.message} />
+          {submissionMessage? <SubmitResponse {...{...submissionMessage}}/> : null}
           <div className="text-center">
             <button className="border border-gray-200 text-gray-200 rounded px-4 py-2 text-lg my-4" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Submit'}</button>
           </div>
-
         </form>
       )}
     </Formik>
   </div>
-);
+)};
 
 export default Form;

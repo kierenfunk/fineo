@@ -7,7 +7,7 @@ const Nav = () => (
       <img src="logo.png" alt="Fineo Digital Logo" />
     </div>
     <div className="flex flex-row gap-16 items-center ">
-      <Link to="connect" smooth={true} duration={500} offset={50}>
+      <Link to="connect" smooth duration={500} offset={50}>
         <button type="button" className="uppercase tracking-wider text-sm font-bold text-gray-600">
           Connect
         </button>

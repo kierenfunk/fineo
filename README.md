@@ -1,7 +1,7 @@
 # Fineo Digital
 [![Netlify Status](https://api.netlify.com/api/v1/badges/03f98569-7eb8-4e22-b7c2-56454a0ba659/deploy-status)](https://app.netlify.com/sites/blissful-austin-8ecbdf/deploys)
 
-> Website for Fineo Digital
+> Website for fineo.digital
 
 #### [Live Demo](https://fineo.digital)
 
